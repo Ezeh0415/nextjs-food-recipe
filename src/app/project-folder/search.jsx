@@ -200,10 +200,10 @@ import Image from "next/image";
                      >
                         <Link href="">
                            <div className="w-[30%] p-2">
-                              <Image
-                              src={image_url}
-                              alt={title}
-                              className="object-cover rounded-full w-[100%] h-[70%]"
+                              <img
+                                 src={image_url}
+                                 alt={title}
+                                 className="object-cover rounded-full w-[100%] h-[70%]"
                               />
                            </div>
 

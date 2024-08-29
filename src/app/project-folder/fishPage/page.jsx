@@ -2,7 +2,7 @@ import { fetchPosts } from "@/app/_api/fetch";
 import { Suspense } from "react";
 import Link from "next/link";
 import Loading from "../landingPage/loading";
-import Image from "next/image";
+import Search from "../search";
 
 const  fishPage = async () => {
 
@@ -27,25 +27,25 @@ const  fishPage = async () => {
             <div className="mt-8 mx-2 flex  md:justify-evenly">
                   <div className="border-2 w-[40%] h-[30%] rounded-full p-2 shadow-lg hover:bg-orange-500 hover:text-white transition duration-300 ease md:w-[20%]">
                      <Link href="./landingPage">
-                        <Image src={PizzaRecipe[3].image_url} alt={PizzaRecipe[3].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
+                        <img src={PizzaRecipe[3].image_url} alt={PizzaRecipe[3].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
                         <p className="mt-8 text-sm  capitalize text-center md:text-xl">pizza</p>
                       </Link>
                   </div>
                   <div className="border-2 w-[40%] rounded-full p-2 ml-2 shadow-lg hover:bg-orange-500 hover:text-white transition duration-300 ease md:w-[20%]">
                      <Link href="./beansPage">
-                        <Image src={beansRecipe[6].image_url} alt={beansRecipe[6].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
+                        <img src={beansRecipe[6].image_url} alt={beansRecipe[6].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
                         <p className="mt-8 text-sm  capitalize text-center md:text-xl">beans</p>
                      </Link>
                   </div>
                <div className="border-2 w-[40%] rounded-full p-2 ml-2 shadow-lg hover:bg-orange-500 hover:text-white transition duration-300 ease md:w-[20%]">
                 <Link href="./fishPage">
-                    <Image src={fishRecipe[9].image_url} alt={fishRecipe[8].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
+                    <img src={fishRecipe[9].image_url} alt={fishRecipe[8].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
                     <p className="mt-8 text-sm  capitalize text-center md:text-xl">Fish</p>
                 </Link>
                </div>
                <div className="border-2 w-[40%] rounded-full p-2 ml-2 shadow-lg hover:bg-orange-500 hover:text-white transition duration-300 ease md:w-[20%]">
                   <Link href="./teaPage">
-                     <Image src={teaRecipe[1].image_url} alt={teaRecipe[1].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
+                     <img src={teaRecipe[1].image_url} alt={teaRecipe[1].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
                      <p className="mt-8 text-sm  capitalize text-center md:text-xl">Tea</p>
                   </Link>
                </div>
@@ -58,7 +58,7 @@ const  fishPage = async () => {
                      return (
                            <div className="flex justify-evenly capitalize  mt-5 bg-gray-100 rounded-md shadow-md" key={id}>
                            <div className="w-[30%] p-2">
-                              <Image src={image_url} alt={title} className="object-cover rounded-full w-[100%] h-[70%]" />
+                              <img src={image_url} alt={title} className="object-cover rounded-full w-[100%] h-[70%]" />
                            </div>
 
                            <div className="mt-1">
