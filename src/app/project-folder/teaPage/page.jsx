@@ -1,21 +1,27 @@
-import { fetchPosts } from "@/app/_api/fetch";
 import { Suspense } from "react";
 import Link from "next/link";
 import Loading from "../landingPage/loading";
-import Search from "../search";
 import Image from "next/image";
+import fetchTea from "@/app/_api/tea/fetch";
 
 const  teaPage = async () => {
 
-   const PizzaRecipe = await fetchPosts("https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza&key=93838a86-f043-44b3-b7cf-0e86da1d4167");
+   const PizzaRecipe = await fetchTea("https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza&key=93838a86-f043-44b3-b7cf-0e86da1d4167", {
+      cache: "no-store",
+   });
 
-   const beansRecipe = await fetchPosts("https://forkify-api.herokuapp.com/api/v2/recipes?search=beans&key=93838a86-f043-44b3-b7cf-0e86da1d4167");
+   const beansRecipe = await fetchTea("https://forkify-api.herokuapp.com/api/v2/recipes?search=beans&key=93838a86-f043-44b3-b7cf-0e86da1d4167", {
+      cache: "no-store",
+   });
    
-   const fishRecipe = await fetchPosts("https://forkify-api.herokuapp.com/api/v2/recipes?search=fish&key=93838a86-f043-44b3-b7cf-0e86da1d4167");
+   const fishRecipe = await fetchTea("https://forkify-api.herokuapp.com/api/v2/recipes?search=fish&key=93838a86-f043-44b3-b7cf-0e86da1d4167", {
+      cache: "no-store",
+   });
    
-   const teaRecipe = await fetchPosts("https://forkify-api.herokuapp.com/api/v2/recipes?search=tea&key=93838a86-f043-44b3-b7cf-0e86da1d4167");
-   
-   const milkRecipe = await fetchPosts("https://forkify-api.herokuapp.com/api/v2/recipes?search=milk&key=93838a86-f043-44b3-b7cf-0e86da1d4167");
+   const teaRecipe = await fetchTea("https://forkify-api.herokuapp.com/api/v2/recipes?search=tea&key=93838a86-f043-44b3-b7cf-0e86da1d4167", {
+      cache: "no-store",
+   });
+
 
    return (
      <main className="mx-2 lg:grid lg:grid-cols-3">
@@ -31,25 +37,57 @@ const  teaPage = async () => {
             <div className="mt-8 mx-2 flex  md:justify-evenly">
                   <div className="border-2 w-[40%] h-[30%] rounded-full p-2 shadow-lg hover:bg-orange-500 hover:text-white transition duration-300 ease md:w-[20%]">
                      <Link href="./landingPage">
-                        <img src={PizzaRecipe[3].image_url} alt={PizzaRecipe[3].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
+                           <Image 
+                              src={PizzaRecipe[1].image_url} 
+                              alt={PizzaRecipe[1].title}
+                              width={300}
+                              height={100}
+                              blurDataUrl="data:..."
+                              placeHolder="blur" 
+                              className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"
+                           />
                         <p className="mt-8 text-sm  capitalize text-center md:text-xl">pizza</p>
                       </Link>
                   </div>
                   <div className="border-2 w-[40%] rounded-full p-2 ml-2 shadow-lg hover:bg-orange-500 hover:text-white transition duration-300 ease md:w-[20%]">
                      <Link href="./beansPage">
-                     <img src={beansRecipe[6].image_url} alt={beansRecipe[6].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
+                           <Image 
+                              src={beansRecipe[1].image_url} 
+                              alt={beansRecipe[1].title}
+                              width={300}
+                              height={100}
+                              blurDataUrl="data:..."
+                              placeHolder="blur" 
+                              className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"
+                           />
                         <p className="mt-8 text-sm  capitalize text-center md:text-xl">beans</p>
                      </Link>
                   </div>
                   <div className="border-2 w-[40%] rounded-full p-2 ml-2 shadow-lg hover:bg-orange-500 hover:text-white transition duration-300 ease md:w-[20%]">
                      <Link href="./fishPage">
-                        <img src={fishRecipe[9].image_url} alt={fishRecipe[8].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
+                        <Image 
+                              src={fishRecipe[1].image_url} 
+                              alt={fishRecipe[1].title}
+                              width={300}
+                              height={100}
+                              blurDataUrl="data:..."
+                              placeHolder="blur" 
+                              className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"
+                           />
                         <p className="mt-8 text-sm  capitalize text-center md:text-xl">Fish</p>
                      </Link>
                </div>
                <div className="border-2 w-[40%] rounded-full p-2 ml-2 shadow-lg hover:bg-orange-500 hover:text-white transition duration-300 ease md:w-[20%]">
                   <Link href="./teaPage">
-                     <img src={teaRecipe[1].image_url} alt={teaRecipe[1].title} className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"/>
+                        <Image 
+                              src={teaRecipe[2].image_url} 
+                              alt={teaRecipe[2].title}
+                              width={300}
+                              height={100}
+                              blurDataUrl="data:..."
+                              placeHolder="blur" 
+                              className="w-[100%] h-[150px] object-cover border-2 shadow-sm rounded-full bg-white"
+                           />
                      <p className="mt-8 text-sm  capitalize text-center md:text-xl">Tea</p>
                   </Link>
                </div>
@@ -62,11 +100,19 @@ const  teaPage = async () => {
                      return (
                            <div className="flex justify-evenly capitalize  mt-5 bg-gray-100 rounded-md shadow-md" key={id}>
                            <div className="w-[30%] p-2">
-                              <img src={image_url} alt={title} className="object-cover rounded-full w-[100%] h-[70%]" />
+                                    <Image 
+                                       src={image_url} 
+                                       alt={title}
+                                       width={300}
+                                       height={100}
+                                       blurDataURL="data:..."
+                                       placeholder="blur"
+                                       className="object-cover rounded-md w-[200px] h-[100px]" 
+                                    />
                            </div>
 
-                           <div className="mt-1">
-                              <h2 className="mb-2 text-sm md:text-xl font-bold">{title}</h2>
+                           <div className="mt-1 w-[65%]">
+                              <h2 className="mb-2 text-sm md:text-md font-bold">{title}</h2>
                               <div className="flex justify-around mb-2 text-gray-400">
                                  <span>
                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -94,16 +140,24 @@ const  teaPage = async () => {
                      )
                   })}
 
-                  {milkRecipe.map(recipe => {
+                  {/* {milkRecipe.map(recipe => {
                      const {publisher,image_url,title,id} = recipe;
                      return (
                            <div className="flex justify-evenly capitalize  mt-5 bg-gray-100 rounded-md shadow-md" key={id}>
                            <div className="w-[30%] p-2">
-                              <Image src={image_url} alt={title} className="object-cover rounded-full w-[100%] h-[70%]" />
+                                    <Image 
+                                       src={image_url} 
+                                       alt={title}
+                                       width={300}
+                                       height={100}
+                                       blurDataURL="data:..."
+                                       placeholder="blur"
+                                       className="object-cover rounded-md w-[200px] h-[100px]" 
+                                    />
                            </div>
 
-                           <div className="mt-1">
-                              <h2 className="mb-2 text-sm md:text-xl font-bold">{title}</h2>
+                           <div className="mt-1 w-[65%]">
+                              <h2 className="mb-2 text-sm md:text-md font-bold">{title}</h2>
                               <div className="flex justify-around mb-2 text-gray-400">
                                  <span>
                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -129,7 +183,7 @@ const  teaPage = async () => {
                            </div>
                            </div>
                      )
-                  })}
+                  })} */}
                </div>
             </Suspense>
          </div>

@@ -198,17 +198,21 @@ import Image from "next/image";
                         className="flex justify-evenly capitalize mt-5 bg-gray-100 rounded-md shadow-md"
                         key={id}
                      >
-                        <Link href="">
+                        <Link href=""  className="flex justify-evenly capitalize mt-5 bg-gray-100 rounded-md shadow-md"> 
                            <div className="w-[30%] p-2">
-                              <img
-                                 src={image_url}
-                                 alt={title}
-                                 className="object-cover rounded-full w-[100%] h-[70%]"
-                              />
+                                    <Image 
+                                       src={image_url} 
+                                       alt={title}
+                                       width={300}
+                                       height={100}
+                                       blurDataURL="data:..."
+                                       placeholder="blur"
+                                       className="object-cover rounded-md w-[200px] h-[100px]" 
+                                    />
                            </div>
 
-                           <div className="mt-1">
-                              <h2 className="mb-2 text-sm md:text-xl font-bold">{title}</h2>
+                           <div className="mt-1 w-[65%]">
+                              <h2 className="mb-2 text-sm md:text-md font-bold">{title}</h2>
                               <div className="flex justify-around mb-2 text-gray-400">
                               <span>
                                  <svg
